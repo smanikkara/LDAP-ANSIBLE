@@ -1,4 +1,4 @@
-### This playbook can be used to Deploy Secure OpenLDAP cluster with 2 masters in HA by Keepalived on RHEL9 servers with W3 password enabled ###
+### This playbook can be used to Deploy Secure OpenLDAP cluster with 2 masters in HA by Keepalived on RHEL9 servers  ###
 
 =========================================================================
 
@@ -26,7 +26,7 @@ a). Put host entry on each master servers in /etc/hosts including VIP. For examp
 
 b). Disable firewalld or allow port 389 and 636 in servers.
 
-c). Configure anton user key and confirm ssh communication from Ansible server to remote hosts
+c). Configure annsible user key and confirm ssh communication from Ansible server to remote hosts
 
 ### 2.	Download LDAP-ANSIBLE folder from this GIT to ANSIBLE server  and cd to that folder
 
@@ -34,7 +34,7 @@ c). Configure anton user key and confirm ssh communication from Ansible server t
 [root@pundldpops101 LDAP-ANSIBLE]# ll
 total 28
 -rw-r--r-- 1 root root  106 Jul  7 04:15 ansible.cfg
--rw------- 1 root root 2622 Jul  7 04:15 antonkey
+-rw------- 1 root root 2622 Jul  7 04:15 annsiblekey
 -rw-r--r-- 1 root root  327 Jul  7 04:15 ldaphosts.inv
 -rw-r--r-- 1 root root  333 Jul  7 04:15 ldapvars
 -rw-r--r-- 1 root root 7218 Jul  7 04:15 ldap.yaml
@@ -66,15 +66,15 @@ In this example I used certs for *.sand.example.com (wild card)
 [root@pundldpops101 LDAP-ANSIBLE]# 
 ```
 
-d). Update inventory host file with anton key and remote server details. Refer below example
+d). Update inventory host file with annsible key and remote server details. Refer below example
 
 ```console
 [root@pundldpops101 LDAP-ANSIBLE]# cat ldaphosts.inv
 #change inventory as per the requirement
 [master1]
-9.46.38.145  ansible_user=anton ansible_ssh_private_key_file=/home/smanikka/LDAP-ANSIBLE/antonkey
+9.46.38.145  ansible_user=annsible ansible_ssh_private_key_file=/home/smanikka/LDAP-ANSIBLE/annsiblekey
 [master2]
-9.172.62.213  ansible_user=anton ansible_ssh_private_key_file=/home/smanikka/LDAP-ANSIBLE/antonkey
+9.172.62.213  ansible_user=annsible ansible_ssh_private_key_file=/home/smanikka/LDAP-ANSIBLE/annsiblekey
 ```
 e). Take VM snapshot from Vcenter before starting installation so that we can revert it easily if anything didnt work,  fix the playbook and rerun.
 
